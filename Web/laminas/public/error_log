@@ -1,0 +1,1 @@
+[29-Jul-2014 18:51:52] PHP Warning:  unlink(/home/hora/public_html/application/../public/uploads/) [<a href='function.unlink'>function.unlink</a>]: Is a directory in /home/hora/public_html/application/modules/admin/controllers/AdministradoresController.php on line 138

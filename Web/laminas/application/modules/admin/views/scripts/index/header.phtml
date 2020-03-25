@@ -1,0 +1,27 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header"><h3 class="text-muted"><img src="<?= BASE_URL.'public/public_admin/images/8b2ac9d1.logo_BWT.png';?>" alt=""></h3></div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav nav-pills navbar-left nav-principal">
+                <li class="<?= $this->menu_active == 'index' ? 'active' : ''; ?>"><a href="<?= $this->url(array('module' => 'admin','controller' => 'index', 'action' => 'index'), null, true)?>">Home</a></li>
+                <?php if($this->perfil == "adm"):?>
+                <li class="<?= $this->menu_active == 'administradores' ? 'active' : ''; ?>"><a href="<?= $this->url(array('module' => 'admin','controller' => 'administradores', 'action' => 'index'), null, true)?>">Usuários</a></li>
+                <li class="<?= $this->menu_active == 'perfis' ? 'active' : ''; ?>"><a href="<?= $this->url(array('module' => 'admin','controller' => 'perfis', 'action' => 'index'), null, true)?>">Perfis</a></li>
+                <li class="<?= $this->menu_active == 'categorias' ? 'active' : ''; ?>"><a href="<?= $this->url(array('module' => 'admin','controller' => 'categorias', 'action' => 'index'), null, true)?>">Categorias</a></li>
+                <?php endif;?>
+                <li><a href="http://www.bwtoperadora.com.br/tutoriais/tutorial-sistema-laminas.pdf" target="_blank">Tutorial</a></li>
+                <li class="<?= $this->menu_active == 'templates' ? 'active' : ''; ?>"><a href="<?= $this->url(array('module' => 'admin', 'controller' => 'templates', 'action' => 'index'), null, true)?>">Templates</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right nav-drop">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Olá <?= $this->usuario->nome_usuario; ?>, Seja bem vindo <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Editar minha conta</a></li>
+                        <li class="divider"></li>
+                        <li><a href="<?= $this->url(array("controller" => "login", "action" => "logout")); ?>">Sair</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>                
+</nav>

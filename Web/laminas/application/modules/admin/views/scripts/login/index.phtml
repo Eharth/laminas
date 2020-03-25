@@ -1,0 +1,88 @@
+
+<?php if (!empty($this->message)) : ?>
+    <?php foreach ($this->message as $message) : ?>
+        <?php if ($message): ?>
+            <div class="<?php print "navbar-fixed-top alert-dismissible text-center alert alert-" . key($message); ?>">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <strong><?php print $message[key($message)]; ?></strong>
+            </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
+<?php endif; ?>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="row">
+            <div class="panel panel-info">
+                <div class="panel-heading"><i class="glyphicon glyphicon-exclamation-sign"></i> Sistema de personalização de lâminas para e-mail marketing</div>
+            <div class="panel-body">
+                <p>
+                    Temos o prazer de oferecer a você, cliente BWT Operadora, nosso mais novo sistema de personalização de lâminas
+            para e-mail marketing. Uma ferramenta simples, prática e intuitiva que ajudará você a criar novos negócios e efetivar muito mais vendas.
+            Para que sua experiência se torne ainda mais fácil, <a href="http://www.bwtoperadora.net/tutoriais/tutorial-sistema-laminas.pdf" target="_blank">acesse aqui</a> nosso tutorial
+                </p>
+            </div>
+        </div>
+        </div>
+       
+    </div>
+</div>
+
+<div class="row">
+    <div class="jumbotron col-md-6 col-md-offset-3 ">
+        <a class="logo" href=""><img src="<?= BASE_URL . 'public/public_admin/images/094f9424.logoBWT_footer.png'; ?>" alt=""></a>
+        <p class="lead">Se você já possui uma conta cadastrada entre com seu login e senha.</p>
+
+        <form action="" method="post" enctype="multipart/form-data">
+            <?php print $this->partial("login/login_form.phtml"); ?>
+        </form>
+
+        <p>Se você não tem acesso <a href="" data-toggle="modal" data-target="#myModal">clique aqui</a> para pedir sua chave de acesso. </p><!-- Button trigger modal -->
+
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Requerir chave de acesso</h4>
+            </div>
+            <div class="modal-body">
+                <?= $this->action('cadastro', 'login', 'admin'); ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- /end content -->
+<!-- Modal -->
+<div class="modal fade" id="myModalSenha" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Enviar senha por email</h4>
+            </div>
+            <div class="modal-body">
+                <form action="<?= $this->url(array("action" => "recover")); ?>" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input class="form-control input-lg login" name="email" type="text" placeholder="E-mail">
+                    </div>
+                    <div class="row"></div>
+                    <p><button class="btn btn-success" href="#"><i class="fa fa-envelope"></i> Enviar</button></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- /end content -->
+
+
+

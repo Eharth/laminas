@@ -1,0 +1,279 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 5, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 9, ../sass/screen.scss */
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* line 15, ../sass/screen.scss */
+.navbar-form {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+/* line 18, ../sass/screen.scss */
+.navbar-form .form-group {
+  margin: 0;
+  padding-top: 9px;
+}
+
+/* Space out content a bit */
+/* line 25, ../sass/screen.scss */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
+
+/* line 30, ../sass/screen.scss */
+.navbar-form .form-group {
+  display: inherit;
+}
+/* line 33, ../sass/screen.scss */
+.navbar-form .form-control {
+  width: 100%;
+}
+
+/* line 37, ../sass/screen.scss */
+body.login, body.admin {
+  padding-top: 80px;
+  padding-bottom: 20px;
+  /* Everything but the jumbotron gets side spacing for mobile first views */
+  /* Custom page header */
+  /* Custom page footer */
+  /* Main marketing message and sign up button */
+  /* Supporting marketing content */
+}
+/* line 40, ../sass/screen.scss */
+body.login .esqueci-senha, body.admin .esqueci-senha {
+  color: #000;
+}
+/* line 45, ../sass/screen.scss */
+body.login .header, body.login .marketing, body.login .footer, body.admin .header, body.admin .marketing, body.admin .footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/* line 51, ../sass/screen.scss */
+body.login .navbar-header, body.admin .navbar-header {
+  padding-top: 15px;
+}
+/* line 54, ../sass/screen.scss */
+body.login .header, body.admin .header {
+  border-bottom: 1px solid #e5e5e5;
+  /* Make the masthead heading the same height as the navigation */
+}
+/* line 58, ../sass/screen.scss */
+body.login .header h3, body.admin .header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+/* line 67, ../sass/screen.scss */
+body.login .footer, body.admin .footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+/* line 72, ../sass/screen.scss */
+body.login .container-narrow > hr, body.admin .container-narrow > hr {
+  margin: 30px 0;
+}
+/* line 76, ../sass/screen.scss */
+body.login nav .nav-principal, body.admin nav .nav-principal {
+  margin-top: 18px;
+  margin-left: 40px;
+}
+/* line 81, ../sass/screen.scss */
+body.login nav .nav-principal a, body.admin nav .nav-principal a {
+  text-transform: uppercase;
+}
+/* line 87, ../sass/screen.scss */
+body.login nav .navbar-nav a.dropdown-toggle, body.admin nav .navbar-nav a.dropdown-toggle {
+  padding: 28px 20px;
+}
+/* line 94, ../sass/screen.scss */
+body.login .jumbotron, body.admin .jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+/* line 97, ../sass/screen.scss */
+body.login .jumbotron .btn, body.admin .jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+/* line 104, ../sass/screen.scss */
+body.login .marketing, body.admin .marketing {
+  margin: 40px 0;
+}
+/* line 106, ../sass/screen.scss */
+body.login .marketing p + h4, body.admin .marketing p + h4 {
+  margin-top: 28px;
+}
+/* line 110, ../sass/screen.scss */
+body.login .jumbotron, body.admin .jumbotron {
+  background: #3db1cf;
+  position: relative;
+}
+/* line 113, ../sass/screen.scss */
+body.login .jumbotron:after, body.admin .jumbotron:after {
+  content: "";
+  background: url("../images/shw_440w.png") no-repeat center;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 7px;
+  bottom: -8px;
+  left: 0;
+}
+/* line 123, ../sass/screen.scss */
+body.login .jumbotron p, body.admin .jumbotron p {
+  color: #fff;
+}
+/* line 126, ../sass/screen.scss */
+body.login .jumbotron a.logo, body.admin .jumbotron a.logo {
+  display: block;
+  margin: 15px auto 40px auto;
+}
+/* line 130, ../sass/screen.scss */
+body.login .jumbotron input[type="text"], body.login .jumbotron input[type="password"], body.admin .jumbotron input[type="text"], body.admin .jumbotron input[type="password"] {
+  color: #000;
+  border: 0;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+/* line 61, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/css3/_user-interface.scss */
+body.login .jumbotron input[type="text"]:-moz-placeholder, body.login .jumbotron input[type="password"]:-moz-placeholder, body.admin .jumbotron input[type="text"]:-moz-placeholder, body.admin .jumbotron input[type="password"]:-moz-placeholder {
+  color: #3db1cf;
+}
+/* line 64, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/css3/_user-interface.scss */
+body.login .jumbotron input[type="text"]::-moz-placeholder, body.login .jumbotron input[type="password"]::-moz-placeholder, body.admin .jumbotron input[type="text"]::-moz-placeholder, body.admin .jumbotron input[type="password"]::-moz-placeholder {
+  color: #3db1cf;
+}
+/* line 67, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/css3/_user-interface.scss */
+body.login .jumbotron input[type="text"]:-ms-input-placeholder, body.login .jumbotron input[type="password"]:-ms-input-placeholder, body.admin .jumbotron input[type="text"]:-ms-input-placeholder, body.admin .jumbotron input[type="password"]:-ms-input-placeholder {
+  color: #3db1cf;
+}
+/* line 56, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/css3/_user-interface.scss */
+body.login .jumbotron input[type="text"]::-webkit-input-placeholder, body.login .jumbotron input[type="password"]::-webkit-input-placeholder, body.admin .jumbotron input[type="text"]::-webkit-input-placeholder, body.admin .jumbotron input[type="password"]::-webkit-input-placeholder {
+  color: #3db1cf;
+}
+/* line 137, ../sass/screen.scss */
+body.login .jumbotron input[type="text"]:focus, body.login .jumbotron input[type="password"]:focus, body.admin .jumbotron input[type="text"]:focus, body.admin .jumbotron input[type="password"]:focus {
+  outline: none;
+}
+/* line 140, ../sass/screen.scss */
+body.login .jumbotron input[type="text"].login, body.login .jumbotron input[type="password"].login, body.admin .jumbotron input[type="text"].login, body.admin .jumbotron input[type="password"].login {
+  -moz-border-radius-bottomleft: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+/* line 143, ../sass/screen.scss */
+body.login .jumbotron input[type="text"].password, body.login .jumbotron input[type="password"].password, body.admin .jumbotron input[type="text"].password, body.admin .jumbotron input[type="password"].password {
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-left-radius: 0;
+  border-top-left-radius: 0;
+  -moz-border-radius-topright: 0;
+  -webkit-border-top-right-radius: 0;
+  border-top-right-radius: 0;
+  border-top: 1px dotted #ccc;
+}
+
+/* Responsive: Portrait tablets and up */
+/* line 152, ../sass/screen.scss */
+input[type=radio] {
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  /* line 161, ../sass/screen.scss */
+  .header, .marketing, .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Space out the masthead */
+  /* line 167, ../sass/screen.scss */
+  .header {
+    margin-bottom: 30px;
+  }
+
+  /* Remove the bottom border on the jumbotron for visual effect */
+  /* line 172, ../sass/screen.scss */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}

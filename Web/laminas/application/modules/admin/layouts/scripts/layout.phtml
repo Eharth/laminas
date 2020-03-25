@@ -1,0 +1,29 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <!-- CONFIGS -->
+        <base href="<?php print BASE_URL; ?>"/>
+        <meta charset="utf-8">
+        <?php
+        print $this->headMeta() . "\n";
+        print $this->headTitle() . "\n";
+        ?>
+        <link rel="shortcut icon" href="<?= BASE_URL.'public/97c077bc.favicon.ico'; ?>">
+        <!-- CSS -->
+        <?php print $this->headLink() . "\n"; ?>
+    </head>
+    <body class="admin">
+
+        <div class="container-fluid">
+
+            <?= $this->action('header', 'index', 'admin'); ?>
+            <?php echo $this->layout()->content; ?>
+            <?= $this->action('footer', 'index', 'admin'); ?>
+
+        </div>       
+
+        <?php print $this->headScript(); ?>
+        <?php print $this->inlineScript(); ?>
+
+    </body>
+</html>

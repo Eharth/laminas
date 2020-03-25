@@ -1,0 +1,47 @@
+<?php
+$data = new App_Plugins_Data();
+?>
+
+
+
+<!-- CONTEUDO DA PAGINA -->
+
+<div class="row marketing">
+
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?= $this->title; ?></h3>
+            </div>
+           
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="25">#</th>
+                        <th>nome</th>
+                        <th>log</th>
+                        <th>data</th>
+                    </tr>
+                </thead>  
+                <tbody>
+                    <?php foreach ($this->logs as $log) : ?>
+                        <tr>
+                            <td><?php echo $this->escape($log->id_log); ?></td>
+                            <td><?php echo $this->escape($log->nome_usuario); ?></td>
+                            <td><?php echo $this->escape($log->desc_log); ?></td>
+                            <td><?php echo $data->data($log->datacad_log)->databrFull; ?></td>
+
+                        </tr>
+                    <?php endforeach; ?>    
+                </tbody>                     
+            </table>
+            <div class="container">
+                <?= $this->paginationControl($this->logs, null, '_paginator.phtml', array("filters" => $this->filters)); ?>
+
+            </div>
+        </div>
+    </div> 
+</div>
+
+

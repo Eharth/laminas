@@ -1,0 +1,50 @@
+<?php
+global $urlTo;
+$urlTo = $this->baseUrl();
+
+function getURL($filters, $page) {
+    global $urlTo;
+
+// retorna o front e o objeto request
+    $frontController = Zend_Controller_Front::getInstance();
+    $request = $frontController->getRequest();
+
+// monta o começo da url
+    $url = $request->getControllerName() . "/" . $request->getActionName() . "/";
+
+// altera o registro de pagina
+    $filters['p'] = $page;
+
+// finaliza a url
+    $url .= "?" . http_build_query($filters);
+
+    return $url;
+}
+?>
+
+<?php if ($this->pageCount) { ?>
+Total: <?= $this->totalItemCount; ?> item(s)<span class="sr-only"></span><br />
+    <ul class="pagination">
+        <? if($this->first != $this->filters['p']): ?>
+        <li><a href="admin/<?= getURL($this->filters, $this->first); ?>"><i class="fa fa-backward"></i></a></li>
+        <? endif; ?>
+        <? if(isset($this->previous)): ?>
+        <li><a href="admin/<?= getURL($this->filters, $this->previous); ?>"><i class="fa fa-step-backward"></i></a></li>
+        <? endif; ?>
+        <?php
+        foreach ($this->pagesInRange as $page) {
+            if ($page == $this->filters['p']) {
+                echo " <li class=\"active\"><a href=\"#\">{$page}<span class=\"sr-only\"></span></a></li>";
+            } else {
+                echo "<li><a href='admin/" . (getURL($this->filters, $page, $this->view)) . "'>{$page}</a></li>";
+            }
+        }
+        ?>
+        <?php if (isset($this->next)): ?>
+            <li><a href="admin/<?= getURL($this->filters, $this->next); ?>"><i class="fa fa-step-forward"></i></a></li>
+        <?php endif; ?>
+        <?php if ($this->last != $this->filters['p']): ?>
+            <li><a href="admin/<?= getURL($this->filters, $this->last); ?>"><i class="fa fa-forward"></i></a></li>
+        <?php endif; ?>
+    </ul>
+<?php } ?>

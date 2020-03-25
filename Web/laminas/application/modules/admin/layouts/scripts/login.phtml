@@ -1,0 +1,27 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <!-- CONFIGS -->
+        <base href="<?php print BASE_URL; ?>"/>
+        <meta charset="utf-8">
+        <?php
+        print $this->headMeta() . "\n";
+        print $this->headTitle() . "\n";
+        ?>
+        <link rel="shortcut icon" href="<?= BASE_URL.'public/97c077bc.favicon.ico'; ?>">
+        <!-- CSS -->
+        <?php print $this->headLink() . "\n"; ?>
+    </head>
+    <body class="login">
+        <div class="container"> 
+            <?php echo $this->layout()->content; ?>
+            <footer class="footer">
+                <p>Power By Polvo</p>
+            </footer>
+        </div>
+
+        <!-- /end content -->
+        <!-- Scripts -->
+        <?php print $this->headScript(); ?>    
+    </body>
+</html>

@@ -1,0 +1,66 @@
+<?php
+$data = new App_Plugins_Data();
+?>
+
+
+
+<!-- CONTEUDO DA PAGINA -->
+
+<div class="row marketing">
+    
+    <div class="container">
+        <?php if (!empty($this->message)) : ?>
+    <?php foreach ($this->message as $message) : ?>
+        <?php if ($message): ?>
+            <div class="<?php print "alert-dismissible text-center alert alert-" . $this->escape(key($message)); ?>">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <strong><?php print $this->escape($message[key($message)]); ?></strong>
+            </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
+<?php endif; ?>
+        
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?= $this->title;?></h3>
+            </div>
+            <div class="panel-body">
+                <a href="<?php echo $this->url(array('controller' => 'perfis', 'action' => 'inserir')); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Cadastrar Novo</a>
+            </div>
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="25">#</th>
+                        <th>nome</th>
+                        <th>sigla</th>
+                        <th>data</th>
+                        <th>status</th>
+                        <th width="100"></th>
+                    </tr>
+                </thead>  
+                <tbody>
+                    <?php foreach ($this->perfis as $perfil) : ?>
+                    <tr>
+                        <td><?php echo $this->escape($perfil->id_perfil); ?></td>
+                        <td><?php echo $this->escape($perfil->nome_perfil); ?></td>
+                        <td><?php echo $this->escape($perfil->sigla_perfil); ?></td>
+                        <td><?php echo $data->data($perfil->datacad_perfil)->databr; ?></td>
+                        <td><?php echo $perfil->status_perfil == 1 ? 'Ativado' : 'Desativado'; ?></td>
+                        <td>
+                            <a class="glyphicon glyphicon-pencil btn btn-xs btn-primary" href="<?php echo $this->url(array('controller' => 'perfis', 'action' => 'editar', 'nid' => $perfil->id_perfil)); ?>" class="edit" title="Editar"></a>
+                            <a class="glyphicon glyphicon-trash btn btn-xs btn-danger" href="<?php echo $this->url(array('controller' => 'perfis', 'action' => 'delete', 'nid' => $perfil->id_perfil)); ?>" class="del" title="Excluir"></a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>    
+                </tbody>                     
+            </table>
+            <div class="container">
+                <?= $this->paginationControl($this->perfis, null, '_paginator.phtml', array("filters" => $this->filters)); ?>
+                
+            </div>
+        </div>
+    </div> 
+</div>
+
+

@@ -1,0 +1,43 @@
+<style>
+    body{
+        margin: 5px;
+        color: #666;
+    }
+</style>
+
+
+<?php
+$date = date('d/m/Y');
+$horario = date('H:i');
+?>
+<center>
+    <table width="598" style="border: 1px solid #8f8f8f">
+        <tr>
+            <td><img src="<?= BASE_URL; ?>public/public_admin/images/8b2ac9d1.logo_BWT.png" alt="" /></td>
+        </tr>
+        <tr>
+            <td>
+                <div style="text-align: center; width: 450px; background: #dddddb; padding: 10px 5px; font-family: Arial; color: #736f66; font-size: 18px">Olá <?= $this->nome; ?>, seja bem vindo(a)</div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 20px">
+                <p style="font-family: Arial; font-size: 14px; color: #736f66;">
+                    Seu e-mail de acesso é: <span style="font-family: Arial; font-size: 14px; color: #004c6c;"> <?= $this->email; ?></span><br />
+                    Sua senha: <span style="font-family: Arial; font-size: 14px; color: #004c6c;"> <?= $this->senha; ?></span><br />
+                </p>
+              
+                <p style="font-family: Arial; font-size: 14px; color: #736f66;"> 
+                    Se tiver alguma dúvida entre em contato pelo nosso e-mail <span style="font-family: Arial; font-size: 14px; color: #000;">contato@bwtoperadora.com.br</span><br />
+                </p>
+                <br/>
+                <br/>
+                <p style="font-family: Arial; font-size: 14px; color: #736f66;">
+                    <a href="http://lamina.bwtoperadora.com.br">Clique aqui para acessar o admin bwt-laminas!</a>
+                </p>
+            </td>
+        </tr>
+    </table>
+</center>
+
+<p>Este email foi gerado no dia <?= $date ?> às <?= $horario ?>.</p>

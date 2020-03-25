@@ -1,0 +1,221 @@
+<?php if ($this->template): ?>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+            <meta name="viewport" content="width=device-width, user-scalable=no">
+                <title>BWT Lâminas</title>
+				<script src="https://www.lamina.bwtoperadora.com.br/laminas/public/public_admin/js/jquery-1.11.1.min.js"></script> 
+        </head>
+        <style>
+            body {
+                margin: 80px 0 0 0;
+            }
+			
+			/* @@ 22/01/16 - rob */
+			#rodape1, #rodape2, #contatobwt, #topoemail, #cabecalho{display:none;}
+			.formx{display:inline-block;float:right;margin-top:-35px;position:relative;}
+		</style>
+        <body>
+            <?php
+            if ($this->template->datavalid_template >= date('Y-m-d')) {
+                if ($this->template->status_template == 1) {
+                    $status = true;
+                } else {
+                    if ($this->perfil == "adm") {
+                        $status = true;
+                    } else {
+                        $status = false;
+                    }
+                }
+            } else {
+                if ($this->perfil == "adm" || $this->perfil == "ope") {
+                    $status = true;
+                } else {
+                    $status = false;
+                }
+            }
+            ?>
+
+            <?php if ($status): ?>
+                <nav class="navbar navbar-default navbar-fixed-top " role="navigation">
+                    <div class="container">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">                      
+                            <a class="navbar-brand" href="#">BWT</a>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="<?= $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'html-lamina', 'nid' => $this->template->id_template, 'uid' => $this->usuario->id_usuario), null, true) ?>" target="_blank">Ver sem barra</a></li>
+                                <li><a href="<?= $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'download', 'nid' => $this->template->id_template, 'uid' => $this->usuario->id_usuario), null, true) ?>">Download .zip</a></li>
+                            </ul>
+                            <form class="navbar-form form-horizontal" role="search">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <label class="col-md-1 control-label"></label>
+                                        <div class="col-md-6">
+
+                                            
+                                        </div>
+                                        
+											<!--<a href="<?php echo str_replace("index/laminas","index/html-lamina",BASE_URL . 'index/html-lamina/nid/' . $this->template->id_template . '/uid/' . $this->usuario->id_usuario . ''); ?>" target="_blank" class="btn btn-danger pull-left">Converter para IMAGEM</a>-->
+
+											<!--<a href="public/public_admin/jpgconvert/lamina-convert-jpg.php<?php echo "?". $this->template->id_template . '&' . $this->usuario->id_usuario; ?>" target="_blank" class="btn btn-danger pull-left">Converter para IMAGEM</a>-->
+													
+									</div>
+
+                                </div>
+                            </form>
+							<!-- @rob 217 -->							
+							<button onclick="dados()" class="btn btn-danger formx">Converter para JPG</button>
+							<form action="public/public_admin/jpgconvert/lamina-convert-jpg.php<?php echo "?". $this->template->id_template . '&' . $this->usuario->id_usuario; ?>" id="formX" method="post" enctype="multipart/form-data" >
+								<div id="result"></div>
+								<textarea id="campoX" name="campo" style="height:1px;width:1px;z-index:-10;opacity:0"></textarea>	
+							</form>	
+							
+							<script>												
+								function dados(){
+									$( "#result" ).load( "https://lamina.bwtoperadora.com.br/laminas/index/html-lamina/nid/<?php echo $this->template->id_template; ?>/uid/<?php echo $this->usuario->id_usuario; ?>", function( response, status, xhr ) {
+										if ( status == "error" ) {
+											var msg = "erro: ";
+											//console.log( msg + xhr.status + " " + xhr.statusText );
+										}else{
+											console.log("1");
+											console.log(document.getElementById("result").innerHTML);
+											
+											$('#result meta').remove();
+											$('#result style').remove();
+											$('#result script').remove();
+											
+											document.getElementById("campoX").value = document.getElementById("result").innerHTML;
+											//document.getElementById("campoX").value = document.getElementsByTagName("table")[0].innerHTML;
+											
+											
+											var text = $('#campoX').val();
+											
+											text = text.replace(/(?:(?:\r\n|\r|\n)\s*){2}/gm, "");
+											console.log("2");
+											console.log(text);
+											
+											
+											document.getElementById("campoX").value = text;
+											
+											console.log("3");
+											console.log(document.getElementById("campoX"));
+									
+											//setTimeout('gerar()', 500);
+											setTimeout('gerar()', 1500);
+										}
+									});	
+								}
+								function gerar(){
+									document.getElementById("formX").submit();
+								}
+							</script>
+							<!-- fim -->
+
+
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                </nav>
+
+                <table width="800" border="0" cellspacing="0" cellpadding="0" style="margin: 0 auto;" bgcolor="#FFFFFF">
+                    <tr>
+                        <?php if ($this->template->html_template): ?>
+                            <td colspan="2" align="center"><?php echo $this->template->html_template; ?></td>
+                        <?php else: ?>
+                            <td colspan="2" align="center"><a href="<?php echo $this->template->url_template; ?>" target="_blank"><img width="800" src="<?= $this->baseUrl('/public/uploads/' . $this->template->imagem_template); ?>" /></a></td>
+                        <?php endif; ?>
+
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div style="padding: 10px; margin-top: 10px; width: 640px">
+                                <table width="100%" height="84" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#FFFFFF" >
+                                    <tr>
+
+                                        <td width="160">
+                                            <?php if ($this->usuario): ?>
+                                                <img width="150" src="<?php echo BASE_URL; ?><?= 'public/uploads/' . $this->usuario->imagem_rodape_usuario; ?>" />                                                
+                                            <?php endif; ?>
+                                        </td>
+                                        <td valign="top" style="padding: 10px; font-family: Arial; font-size: 12px; color: #666; line-height: 17px">
+                                            <span style="color: #656565; font-family: Arial; font-weight : bold"><?= $this->usuario->nome_usuario ? $this->escape($this->usuario->nome_usuario) : ""; ?></span><br />
+                                            <span style="color: #656565; font-family: Arial;"><?= $this->usuario->operadora_usuario ? $this->usuario->operadora_usuario : ""; ?></span><br />
+                                            <span style="color: #656565; font-family: Arial;"><?= $this->usuario->telefone_usuario ? str_replace(")", ") ", $this->usuario->telefone_usuario) : ""; ?></span><br />
+                                            <span style="color: #656565; font-family: Arial;"><?= $this->usuario->site_usuario ? "<a style='text-decoration: none; color: #656565; font-weight : bold' href='" . $this->usuario->site_usuario . "'>" . $this->usuario->site_usuario . "</a>" : ""; ?></span><br />
+                                            <span style="color: #656565; font-family: Arial;"><?= $this->usuario->email_usuario ? "<a style='text-decoration: none; color: #656565; font-weight : bold' href='mailto:" . $this->usuario->email_usuario . "'>" . $this->usuario->email_usuario . "</a>" : ""; ?></span><br />
+                                            <span style="color: #656565; font-family: Arial;"><?= $this->usuario->endereco_usuario ? $this->usuario->endereco_usuario : ""; ?></span>
+                                        </td>
+                                        <td width="83" height="84" valign="middle">
+                                            <table width="83" height="84" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#FFFFFF">
+                                                <tr>
+                                                    <td>
+                                                        <?php if ($this->usuario->facebook_usuario): ?>
+                                                            <a href="<?= $this->usuario->facebook_usuario; ?>">
+                                                                <img style="display: block; float: left" src="<?php echo BASE_URL .'public/public_admin/images/rodape_09.jpg'; ?>" />
+                                                            </a>
+                                                        <?php else: ?>
+                                                            <img style="display: block; float: left" src="<?php echo BASE_URL .'public/public_admin/images/rodape_09a.jpg'; ?>" />
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php if ($this->usuario->instagram_usuario): ?>
+                                                            <a href="<?= $this->usuario->instagram_usuario; ?>">
+                                                                <img style="display: block; float: left" src="<?php echo BASE_URL .'public/public_admin/images/rodape_10.jpg'; ?>" />
+                                                            </a>
+                                                        <?php else: ?>
+                                                            <img style="display: block; float: left" src="<?php echo BASE_URL .'public/public_admin/images/rodape_10a.jpg'; ?>" />
+                                                        <?php endif; ?>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <?php if ($this->usuario->google_usuario): ?>
+                                                            <a href="<?= $this->usuario->google_usuario; ?>">
+                                                                <img style="display: block; float: left" src="<?php echo BASE_URL .'public/public_admin/images/rodape_11.jpg'; ?>" />
+                                                            </a>
+                                                        <?php else: ?>
+                                                            <img style="display: block; float: left" src="<?php echo BASE_URL .'public/public_admin/images/rodape_11a.jpg'; ?>" />
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php if ($this->usuario->twitter_usuario): ?>
+                                                            <a href="<?= $this->usuario->twitter_usuario; ?>">
+                                                                <img style="display: block; float: left" src="<?php echo BASE_URL . 'public/public_admin/images/rodape_12.jpg'; ?>" />
+                                                            </a>
+                                                        <?php else: ?>
+                                                            <img style="display: block; float: left" src="<?php echo BASE_URL . 'public/public_admin/images/rodape_12a.jpg'; ?>" />
+                                                        <?php endif; ?>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </td>
+                    </tr>
+
+                </table>
+            <?php else: ?>            
+                <div class="col-md-6 col-md-offset-3 ">
+                    <div class="col-md-6 col-md-offset-3 text-center"><img src="<?= $this->BaseUrl('public/public_admin/images/8b2ac9d1.logo_BWT.png'); ?>" alt=""><br /><br /></div>
+                    <div class="alert alert-warning col-md-6 col-md-offset-3 text-center" role="alert">Está lámina não está mais disponivel</div>
+                </div>
+            <?php endif; ?>
+        <?php else: ?>
+            <div class="col-md-6 col-md-offset-3 ">
+                <div class="col-md-6 col-md-offset-3 text-center"><img src="<?= $this->BaseUrl('public/public_admin/images/8b2ac9d1.logo_BWT.png'); ?>" alt=""><br /><br /></div>
+                <div class="alert alert-warning col-md-6 col-md-offset-3 text-center" role="alert">NENHUMA LAMINA CADASTRA</div>
+            </div>
+        <?php endif; ?>
+
+
+    </body>
+</html>

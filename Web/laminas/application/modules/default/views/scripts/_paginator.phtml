@@ -1,0 +1,73 @@
+<?
+global $urlTo;
+$urlTo = $this->baseUrl();
+
+function getURL($filters, $page) {
+   global $urlTo;
+
+   // retorna o front e o objeto request
+   $frontController = Zend_Controller_Front::getInstance();
+   $request = $frontController->getRequest();
+
+   // monta o começo da url
+   if($filters['c'] > 0){
+        if($filters['s'] > 0){
+            $url = $request->getControllerName() . "/" . $filters['c'] . "/" . $filters['s'];
+        } else {
+            $url = $request->getControllerName() . "/" . $filters['c'] ."/";
+        }       
+   }
+   else {
+       $url = $request->getControllerName() . "/" . $request->getActionName() . "/";
+   }
+     
+   // altera o registro de pagina
+   $filters['p'] = $page;
+   
+   
+   $filtro['t'] = $filters['t'];
+   $filtro['p'] = $page;
+
+   // finaliza a url
+   $url .= "?" . http_build_query($filtro);
+
+   return $urlTo . $url;
+}
+?>
+
+<? if ($this->pageCount) { ?>
+    <span class="count">
+        <?= $this->totalItemCount; ?> item(s)
+    </span>
+   
+
+   <? if ($this->first != $this->filters['p']): ?>
+      <a class="btnprev" href="<?= getURL($this->filters, $this->first); ?>">&laquo; Anterior</a>
+   <? endif; ?>
+   <!--
+   <? if (isset($this->previous)): ?>
+      <a class="btnprev" href="<?= getURL($this->filters, $this->previous); ?>">&laquo;</a>
+   <? endif; ?>
+   -->
+
+   <span>
+      <?
+      foreach ($this->pagesInRange as $page) {
+         if ($page == $this->filters['p']) {
+            echo "<a href=\"#\" class=\"active\">{$page}</a>";
+         } else {
+            echo "<a href='" .(getURL($this->filters, $page, $this->view)) . "'>{$page}</a>";
+         }
+      }
+      ?>
+   </span>
+   <!--
+   <? if (isset($this->next)): ?>
+      <a class="btnnext" href="<?= getURL($this->filters, $this->next); ?>">&raquo;</a>
+   <? endif; ?>
+   -->
+   <? if ($this->last != $this->filters['p']): ?>
+      <a class="btnnext" href="<?= getURL($this->filters, $this->last); ?>">Próximo &raquo;</a>
+   <? endif; ?>
+
+<? } ?>

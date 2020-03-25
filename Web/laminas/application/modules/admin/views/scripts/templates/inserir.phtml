@@ -1,0 +1,23 @@
+<div class="row marketing">
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?= $this->title;?></h3>
+            </div>
+            <div class="panel-body">
+                <?php if (!empty($this->message)) : ?>
+                    <?php foreach ($this->message as $message) : ?>
+                        <?php if ($message): ?>
+                            <div class="<?php print "alert-dismissible alert alert-" . $this->escape(key($message)); ?>">
+                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <strong><?php print $message[key($message)]; ?></strong>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                <?= $this->form; ?>
+            </div>
+        </div>
+    </div> 
+</div>
+

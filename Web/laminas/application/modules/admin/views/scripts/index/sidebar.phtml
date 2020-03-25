@@ -1,0 +1,40 @@
+<aside>
+
+    <nav>
+        <h1 class="logo">
+            <a href=""></a>
+            <div class="bottom"></div>
+        </h1>
+        <ul>
+            <li><a class="<?= $this->menu_active == "index" ? "active " : NULL ?>" href="<?= $this->url(array("module" => "admin", "controller" => "index"), null, true); ?>">Dashboard <span></span></a></li>
+            <? if ($this->usuario->nomePerfil == "Administrador"): ?>
+                <li><a class="<?= $this->menu_active == "administradores" ? "active " : NULL ?>" href="<?= $this->url(array("module" => "admin", "controller" => "administradores"), null, true); ?>">Administradores <span></span></a></li>
+            <? endif; ?>
+            <? if ($this->usuario->nomePerfil == "Clinica" || $this->usuario->nomePerfil == "Administrador" || $this->usuario->nomePerfil == "Profissional"): ?>
+                <li><a class="<?= $this->menu_active == "profissionais" ? "active " : NULL ?>" href="<?= $this->url(array("module" => "admin", "controller" => "profissionais"), null, true); ?>">
+                        <?= $this->usuario->nomePerfil == "Profissional" ? "Meus Dados" : "Profissionais"; ?> <span></span></a></li>
+            <? endif; ?>
+            <? if ($this->usuario->nomePerfil == "Clinica" || $this->usuario->nomePerfil == "Administrador"): ?>
+                <li><a class="<?= $this->menu_active == "clinicas" ? "active " : NULL ?>" href="<?= $this->url(array("module" => "admin", "controller" => "clinicas"), null, true); ?>">
+                        <?= $this->usuario->nomePerfil == "clinicas" ? "Meus Dados" : "Clínicas"; ?><span></span></a></li>
+            <? endif; ?>
+            <? if ($this->usuario->nomePerfil == "Administrador"): ?>
+                <li><a class="<?= $this->menu_active == "planos" ? "active " : NULL ?>" href="<?= $this->url(array("module" => "admin", "controller" => "operadoras"), null, true); ?>">Operadoras e Planos <span></span></a></li>
+                <li><a class="<?= $this->menu_active == "especialidades" ? "active " : NULL ?>" href="<?= $this->url(array("module" => "admin", "controller" => "especialidades"), null, true); ?>">Especialidades<span></span></a></li>
+                <li><a class="<?= $this->menu_active == "conselhos" ? "active " : NULL ?>" href="<?= $this->url(array("module" => "admin", "controller" => "conselhos"), null, true); ?>">Conselhos<span></span></a></li>
+            <? endif; ?>
+            <? if ($this->usuario->nomePerfil == "Clinica" || $this->usuario->nomePerfil == "Recepcionista"): ?>
+                <li><a class="<?= $this->menu_active == "recepcionistas" ? "active " : NULL ?>" href="<?= $this->url(array("module" => "admin", "controller" => "recepcionistas"), null, true); ?>">Recepcionistas <span></span></a></li>
+            <? endif; ?>   
+                <li><a class="" href="<?= $this->url(array("module" => "admin", "controller" => "pacientes"), null, true); ?>">Pacientes <span></span></a></li>
+            <? if ($this->usuario->nomePerfil == "Profissional"): ?>
+                <li><a class="" href="<?= $this->url(array("module" => "admin", "controller" => "fotos"), null, true); ?>">Fotos <span></span></a></li>
+            <? endif; ?>
+            <? if ($this->usuario->nomePerfil == "Recepcionista"): ?>
+                <li><a class="<?= $this->menu_active == "agenda" ? "active " : NULL ?>" href="<?= $this->url(array("module" => "admin", "controller" => "recepcionistas", "action" => "agenda"), null, true); ?>">Agendas <span></span></a></li>
+            <? endif; ?>
+            <li><a class="" href="<?= $this->url(array("module" => "admin", "controller" => "mural"), null, true); ?>">Mural <span></span></a></li>
+
+        </ul>
+    </nav>
+</aside>

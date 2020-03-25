@@ -1,0 +1,163 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/css3/user-interface";
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+.navbar-form {
+    margin-bottom: 0;
+    margin-top: 0;
+    .form-group {
+        margin: 0;
+        padding-top: 9px;
+    }
+}
+/* Space out content a bit */
+
+body.login, body.admin {
+    padding-top: 80px;
+    padding-bottom: 20px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    .esqueci-senha {
+        color: #000;
+    }
+    /* Everything but the jumbotron gets side spacing for mobile first views */
+    
+    .header, .marketing, .footer {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    /* Custom page header */
+
+    .navbar-header {
+    	padding-top: 15px;
+    }
+    
+    .header {
+        border-bottom: 1px solid #e5e5e5;
+        /* Make the masthead heading the same height as the navigation */
+        
+        h3 {
+            margin-top: 0;
+            margin-bottom: 0;
+            line-height: 40px;
+            padding-bottom: 19px;
+        }
+    }
+    /* Custom page footer */
+    
+    .footer {
+        padding-top: 19px;
+        color: #777;
+        border-top: 1px solid #e5e5e5;
+    }
+    .container-narrow > hr {
+        margin: 30px 0;
+    }
+    nav {
+        .nav-principal {
+            margin-top: 18px;
+            margin-left: 40px;
+        }
+        .nav-principal {
+            a {
+                // padding: 28px 30px;
+                text-transform: uppercase
+            }
+        }
+        .navbar-nav {
+            a.dropdown-toggle {
+                padding: 28px 20px;
+            }
+        }
+    }
+    /* Main marketing message and sign up button */
+    
+    .jumbotron {
+        text-align: center;
+        border-bottom: 1px solid #e5e5e5;
+        .btn {
+            font-size: 21px;
+            padding: 14px 24px;
+        }
+    }
+    /* Supporting marketing content */
+    
+    .marketing {
+        margin: 40px 0;
+        p + h4 {
+            margin-top: 28px;
+        }
+    }
+    .jumbotron {
+        background: #3db1cf;
+        position: relative;
+        &:after {
+            content: "";
+            background: url("../images/shw_440w.png") no-repeat center;
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 7px;
+            bottom: -8px;
+            left: 0;
+        }
+        p {
+            color: #fff;
+        }
+        a.logo {
+            display: block;
+            margin: 15px auto 40px auto;
+        }
+        input[type="text"], input[type="password"] {
+            color: #000;
+            @include input-placeholder {
+                color: #3db1cf;
+            }
+            border: 0;
+            @include box-shadow(none);
+            &:focus {
+                outline: none
+            }
+            &.login {
+                @include border-bottom-radius(0px);
+            }
+            &.password {
+                @include border-top-radius(0);
+                border-top: 1px dotted #ccc;
+            }
+        }
+    }
+}
+/* Responsive: Portrait tablets and up */
+
+@media screen and (min-width: 768px) {
+    .container {
+        //max-width: 730px;
+    }
+    /* Remove the padding we set earlier */
+    
+    .header, .marketing, .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    /* Space out the masthead */
+    
+    .header {
+        margin-bottom: 30px;
+    }
+    /* Remove the bottom border on the jumbotron for visual effect */
+    
+    .jumbotron {
+        border-bottom: 0;
+    }
+}

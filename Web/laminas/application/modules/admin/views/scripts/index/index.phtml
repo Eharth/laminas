@@ -1,0 +1,255 @@
+<?php
+$data = new App_Plugins_Data();
+?>
+
+<!-- Content -->
+
+<div class="row marketing">
+    <?php if (!empty($this->message)) : ?>
+        <?php foreach ($this->message as $message) : ?>
+            <?php if ($message): ?>
+                <div class="<?php print "alert-dismissible text-center alert alert-" . $this->escape(key($message)); ?>">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <strong><?php print $this->escape($message[key($message)]); ?></strong>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    <?php endif; ?>
+    <div class="col-md-6">
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><?= $this->title; ?></h3>
+                </div>
+                <?php if ($this->perfil == "adm"): ?>
+                    <div class="panel-body">
+                        <a href="<?= $this->url(array("module" => "admin", "controller" => "administradores", "action" => "inserir"), null, true); ?>" class="btn btn-primary"><i class="fa fa-plus"></i> Cadastrar Novo</a>
+                        <a href="<?= $this->url(array("module" => "admin", "controller" => "administradores", "action" => "index"), null, true); ?>" class="btn btn-primary"><i class="fa fa-list-alt"></i> Ver todos</a>
+                    </div>
+                    <!-- Table -->
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th width="25">#</th>
+                                <th>nome</th>
+                                <th>data</th>
+                                <th>status</th>
+                                <th width="100"></th>
+                            </tr>
+                        </thead>  
+                        <tbody>
+                            <?php foreach ($this->usuarios as $usuario): ?>
+                                <tr>
+                                    <td><?= $usuario->id_usuario; ?></td>
+                                    <td><?= $usuario->nome_usuario; ?></td>
+                                    <td><?= $data->data($usuario->datacad_usuario)->databr; ?></td>
+                                    <td><?= $usuario->status_usuario == 1 ? 'Ativado' : 'Desativado'; ?></td>
+                                    <td>
+                                        <a href="<?= $this->url(array("module" => "admin", "controller" => "administradores", "action" => "editar", "nid" => $usuario->id_usuario), null, true); ?>" data-toggle="tooltip" data-placement="bottom" title="editar usuário" class="glyphicon glyphicon-pencil btn btn-xs btn-primary"></a>
+                                        <a href="<?= $this->url(array("module" => "admin", "controller" => "administradores", "action" => "delete", "nid" => $usuario->id_usuario), null, true); ?>" title="excluir usuário" class="glyphicon glyphicon-trash btn btn-xs btn-danger"></a>
+                                    </td>
+                                </tr>    
+                            <?php endforeach; ?>
+                        </tbody>                     
+                    </table>
+                <?php else : ?>
+                    <div class="panel-body">
+                        <?= $this->form; ?>
+                    </div>
+
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php if ($this->perfil == "adm"): ?>
+            <div class="col-xs-12 col-sm-12 col-lg-12">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Pedido de chave de acesso</h3>
+                    </div>
+                    <div class="panel-body">
+                        <a href="<?= $this->url(array("module" => "admin", "controller" => "administradores", "action" => "index", "filtro" => "novos"), null, true); ?>" class="btn btn-primary"><i class="fa fa-list-alt"></i> Ver todos</a>
+                    </div>
+                    <!-- Table -->
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th width="25">#</th>
+                                <th>nome</th>
+                                <th>e-mail</th>
+                                <th>agência</th>
+                                <th>data</th>
+                                <th>status</th>
+                                <th width="100"></th>
+                            </tr>
+                        </thead>  
+                        <tbody>
+                            <?php foreach ($this->novos_usuarios as $novos_usuarios): ?>
+                                <tr>
+                                    <td><?= $novos_usuarios->id_usuario; ?></td>
+                                    <td><?= $novos_usuarios->nome_usuario; ?></td>
+                                    <td><?= $novos_usuarios->email_usuario; ?></td>
+                                    <td><?= $novos_usuarios->operadora_usuario; ?></td>
+                                    <td><?= $data->data($novos_usuarios->datacad_usuario)->databr; ?></td>
+                                    <td><?= $novos_usuarios->status_usuario == 1 ? 'Ativado' : 'Desativado'; ?></td>
+                                    <td>
+                                        <a href="<?= $this->url(array("module" => "admin", "controller" => "administradores", "action" => "validar", "nid" => $novos_usuarios->id_usuario), null, true); ?>" title="enviar senha" alt="enviar senha" class="glyphicon glyphicon-envelope btn btn-xs btn-success"></a>
+                                        <a href="<?= $this->url(array("module" => "admin", "controller" => "administradores", "action" => "editar", "nid" => $novos_usuarios->id_usuario), null, true); ?>" title="editar usuário" class="glyphicon glyphicon-pencil btn btn-xs btn-primary"></a>
+                                        <a href="<?= $this->url(array("module" => "admin", "controller" => "administradores", "action" => "delete", "nid" => $novos_usuarios->id_usuario), null, true); ?>" title="excluir usuário" class="glyphicon glyphicon-trash btn btn-xs btn-danger"></a>
+                                    </td>
+                                </tr>    
+                            <?php endforeach; ?>
+                        </tbody>                     
+                    </table>          
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+    <div class="col-md-6">
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Últimos templates Cadastrados</h3>
+                </div>
+                
+                <?php if ($this->perfil == "adm"): ?>
+                    <div class="panel-body">
+                        <a href="<?= $this->url(array("module" => "admin", "controller" => "templates", "action" => "inserir"), null, true); ?>" class="btn btn-primary"><i class="fa fa-plus"></i> Cadastrar Novo</a>
+                        <a href="<?= $this->url(array("module" => "admin", "controller" => "templates", "action" => "index"), null, true); ?>" class="btn btn-primary"><i class="fa fa-list-alt"></i> Ver todos</a>
+                    </div>
+                    <!-- Table -->
+                    <?php if (count($this->templates) < 1): ?>
+                        <div class="panel-body">
+                            <div class="alert alert-warning" role="alert">Nenhum template cadastrado da base</div>
+                        </div>
+                    <?php else: ?>                   
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th width="25">#</th>
+                                    <th>nome</th>
+                                    <th>categoria</th>
+                                    <th>data</th>
+                                    <th>validade</th>
+                                    <th>status</th>
+                                    <th width="100"></th>
+                                </tr>
+                            </thead>  
+                            <tbody>
+                                <?php foreach ($this->templates as $template): ?>
+                                    <?php
+                                    if ($template->datavalid_template >= date('Y-m-d')) {
+                                        if ($template->status_template == 1) {
+                                            $status = "Ativado";
+                                            $class = null;
+                                        } else {
+                                            $status = "Desativado";
+                                            $class = "warning";
+                                        }
+                                    } else {
+                                        $status = "Expirado";
+                                        $class = "danger";
+                                    }
+                                    ?>
+                                    <tr class="<?php echo $class;?>">
+                                        <td><?= $template->id_template; ?></td>
+                                        <td><?= $template->titulo_template; ?></td>
+                                        <td><?= $template->nome_categoria; ?></td>
+                                        <td><?= $data->data($template->datacad_template)->databr; ?></td>
+                                        <td><?= $data->data($template->datavalid_template)->databr; ?></td>
+                                        <td><?= $status; ?></td>
+                                        <td>
+                                            <a href="<?php print $this->url(array("controller" => "index", "action" => "laminas", "nid" => $template->id_template, "uid" => $this->idUsuario), null, true) ?>" target="_blank" class="glyphicon glyphicon-search btn btn-xs btn-primary"></a>
+                                            <a href="<?= $this->url(array("module" => "admin", "controller" => "templates", "action" => "editar", "nid" => $template->id_template), null, true); ?>" class="glyphicon glyphicon-pencil btn btn-xs btn-primary"></a>
+                                            <a href="<?= $this->url(array("module" => "admin", "controller" => "templates", "action" => "delete", "nid" => $template->id_template), null, true); ?>" class="glyphicon glyphicon-trash btn btn-xs btn-danger"></a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                <tr>
+                            </tbody>                     
+                        </table>
+                    <?php endif; ?>
+                <?php else: ?>
+
+                    <?php if (count($this->templates) < 1): ?>
+                        <div class="panel-body">
+                            <div class="alert alert-warning" role="alert">Nenhum template cadastrado da base</div>
+                        </div>
+                    <?php else: ?>
+                        <div class="panel-body">
+                            <a href="<?= $this->url(array("module" => "admin", "controller" => "templates", "action" => "index"), null, true); ?>" class="btn btn-primary"><i class="fa fa-list-alt"></i> Ver todos</a>
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th width="25">#</th>
+                                    <th>nome</th>
+                                    <th>categoria</th>
+                                    <th>data</th>
+                                    <th>validade</th>
+                                    <th>status</th>
+                                    <th width="50"></th>
+                                </tr>
+                            </thead>  
+                            <tbody>
+                                <?php foreach ($this->templates as $template): ?>
+                                    <tr>
+                                        <td><?= $template->id_template; ?></td>
+                                        <td><?= $template->titulo_template; ?></td>
+                                        <td><?= $template->nome_categoria; ?></td>
+                                        <td><?= $data->data($template->datacad_template)->databr; ?></td>
+                                        <td><?= $data->data($template->datavalid_template)->databr; ?></td>
+                                        <td><?= $template->status_template == 1 ? 'Ativado' : 'Desativado'; ?></td>
+                                        <td>
+                                            <a href="<?php print $this->url(array("controller" => "index", "action" => "laminas", "nid" => $template->id_template, "uid" => $this->idUsuario), null, true) ?>" target="_blank" class="glyphicon glyphicon-search btn btn-xs btn-primary"></a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                <tr>
+                            </tbody>                     
+                        </table>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php if ($this->perfil == "adm"): ?>
+            <div class="col-xs-12 col-sm-12 col-lg-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Logs</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <a href="<?= $this->url(array("module" => "admin", "controller" => "index", "action" => "log"), null, true); ?>" class="btn btn-info"><i class="fa fa-list-alt"></i> Ver todos</a>
+                    </div>
+
+                    <!-- Table -->
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th width="25">#</th>
+                                <th>nome</th>
+                                <th>log</th>
+                                <th>data</th>
+                            </tr>
+                        </thead>  
+                        <tbody>                     
+                            <?php foreach ($this->logs as $log) : ?>
+                                <tr>
+                                    <td><?php echo $this->escape($log->id_log); ?></td>
+                                    <td><?php echo $this->escape($log->nome_usuario); ?></td>
+                                    <td><?php echo $this->escape($log->desc_log); ?></td>
+                                    <td><?php echo $data->data($log->datacad_log)->databrFull; ?></td>
+
+                                </tr>
+                            <?php endforeach; ?>                      
+                        </tbody>                     
+                    </table>       
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<!-- Notificação -->
+<!-- Box Atencao -->
+<?php if (!empty($this->message)) : ?>
+    <?php foreach ($this->message as $message) : ?>
+        <?php if ($message): ?>
+            <div class="<?php print "message close " . $this->escape(key($message)); ?>"><p><?php print $this->escape($message[key($message)]); ?><p></div>
+        <?php endif; ?>
+    <?php endforeach; ?>
+<?php endif; ?>
+<!-- /Box Atencao -->
+<!-- Content -->
+
+<div class="row marketing">
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?= $this->title;?></h3>
+            </div>
+            <div class="panel-body">
+                <?= $this->form; ?>
+            </div>
+        </div>
+    </div> 
+</div>
+

@@ -1,0 +1,85 @@
+<?php
+$data = new App_Plugins_Data();
+?>
+
+
+
+<!-- CONTEUDO DA PAGINA -->
+
+<div class="row marketing">
+    
+    <div class="container">
+        <?php if (!empty($this->message)) : ?>
+    <?php foreach ($this->message as $message) : ?>
+        <?php if ($message): ?>
+            <div class="<?php print "alert-dismissible text-center alert alert-" . $this->escape(key($message)); ?>">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <strong><?php print $this->escape($message[key($message)]); ?></strong>
+            </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
+<?php endif; ?>
+        
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?= $this->title;?></h3>
+            </div>
+            <div class="panel-body">
+                <a href="<?php echo $this->url(array('controller' => 'administradores', 'action' => 'inserir')); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Cadastrar Novo</a>
+            </div>
+            
+			<div class="panel-body bg-info">
+                    <form class="form-inline">
+                       						
+						<div class="form-group">
+                           
+                        </div>
+                        <div class="form-group">                            							
+                            <input type="text" name="buscar" class="form-control" />
+                            
+                        </div>
+                        <button type="submit" class="btn btn-default">pesquisar</button>
+                    </form>
+            </div>	
+			
+			
+			<!-- Table -->
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th width="25">#</th>
+                        <th>nome</th>
+                        <th>e-mail</th>
+                        <th>agência</th>
+                        <th>data</th>
+                        <th>status</th>
+                        <th width="100"></th>
+                    </tr>
+                </thead>  
+                <tbody>
+                    <?php foreach ($this->usuarios as $usuario) : ?>
+                    <tr>
+                        <td><?php echo $this->escape($usuario->id_usuario); ?></td>
+                        <td><?php echo $this->escape($usuario->nome_usuario); ?></td>
+                        <td><?php echo $this->escape($usuario->email_usuario); ?></td>
+                        <td><?php echo $this->escape($usuario->operadora_usuario); ?></td>
+                        <td><?php echo $data->data($usuario->datacad_usuario)->databr; ?></td>
+                        <td><?php echo $usuario->status_usuario == 1 ? 'Ativado' : 'Desativado'; ?></td>
+                        <td>
+                            <a class="glyphicon glyphicon-envelope btn btn-xs btn-success" href="<?= $this->url(array("controller" => "administradores", "action" => "validar", "nid" => $usuario->id_usuario)); ?>" title="enviar senha"></a>
+                            <a class="glyphicon glyphicon-pencil btn btn-xs btn-primary" href="<?php echo $this->url(array('controller' => 'administradores', 'action' => 'editar', 'nid' => $usuario->id_usuario)); ?>" class="edit" title="Editar"></a>
+                            <a class="glyphicon glyphicon-trash btn btn-xs btn-danger" href="<?php echo $this->url(array('controller' => 'administradores', 'action' => 'delete', 'nid' => $usuario->id_usuario)); ?>" class="del" title="Excluir"></a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>    
+                </tbody>                     
+            </table>
+            <div class="container">
+                <?= $this->paginationControl($this->usuarios, null, '_paginator.phtml', array("filters" => $this->filters)); ?>
+                
+            </div>
+        </div>
+    </div> 
+</div>
+
+

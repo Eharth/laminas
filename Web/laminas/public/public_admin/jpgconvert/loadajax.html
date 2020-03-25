@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>Arquivo JPG</title>	
+	<script src="https://lamina.bwtoperadora.com.br/laminas/public/public_admin/js/jquery-1.11.1.min.js"></script> 
+	<script type="text/javascript" src="https://lamina.bwtoperadora.com.br/laminas/public/public_admin/js/html2canvas.js"></script>
+	<link rel="stylesheet" href="https://lamina.bwtoperadora.com.br/laminas/public/public_admin/js/jquery-ui-1.11.4.custom/jquery-ui.min.css">
+	<script src="https://lamina.bwtoperadora.com.br/laminas/public/public_admin/js/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>	
+	<style>
+		#contatobwt{display:none !important}
+	</style>
+</head>
+
+
+<body>
+<form action="gravarimg.php?1044&540" id="formX" method="post" enctype="multipart/form-data">
+	<div id="result"></div>
+	<textarea id="campoX" name="campo"></textarea>	
+</form>	
+<button onclick="dados()" class="btn btn-danger">Converter para JPG</button>
+
+</body>
+<script>
+function dados(){
+	$( "#result" ).load( "https://lamina.bwtoperadora.com.br/laminas/index/html-lamina/nid/1042/uid/540", function( response, status, xhr ) {
+		if ( status == "error" ) {
+			var msg = "Sorry but there was an error: ";
+			console.log( msg + xhr.status + " " + xhr.statusText );
+		}else{
+			$('#result meta').remove();
+			$('#result style').remove();
+			$('#result script').remove();
+			
+			document.getElementById("campoX").value = document.getElementById("result").innerHTML;
+			var text = $('#campoX').val();
+			text = text.replace(/(?:(?:\r\n|\r|\n)\s*){2}/gm, "");
+			document.getElementById("campoX").value = text;
+			setTimeout('gerar()', 500);
+		}
+	});	
+}
+function gerar(){
+	document.getElementById("formX").submit();
+}
+</script>
+</html>

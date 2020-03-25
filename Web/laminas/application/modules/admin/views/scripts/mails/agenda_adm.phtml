@@ -1,0 +1,44 @@
+<style>
+    body{
+        margin: 5px;
+        color: #666;
+    }
+</style>
+
+
+<?php
+$date = date('d/m/Y');
+$horario = date('H:i');
+?>
+<center>
+    <table width="598" style="border: 1px solid #8f8f8f">
+        <tr>
+            <td><img src="<?= $this->baseUrl('public/public_admin/img/topo-email.jpg'); ?>" alt="" /></td>
+        </tr>
+        <tr>
+            <td>
+                <div style="text-align: center; width: 450px; background: #dddddb; padding: 10px 5px; font-family: Arial; color: #736f66; font-size: 18px">Agendamento Hora do Médico</div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 20px">
+                <p style="font-family: Arial; font-size: 14px; color: #736f66;">
+                    Olá, <?= $this->nome;?>
+                </p>
+                <h2 style="font-family: Arial; font-size: 18px; color: #736f66;">Sua consulta foi aprovada pelo profissional!</h2>
+                <br />
+                <p style="font-family: Arial; font-size: 14px; color: #736f66;">
+                    Data da consulta: <span style="font-family: Arial; font-size: 14px; color: #004c6c;"> <?= $this->data; ?></span><br />
+                    Profissional: <span style="font-family: Arial; font-size: 14px; color: #004c6c;"> <?= $this->profissional; ?></span><br />
+                </p>
+                <br />
+                <p style="font-family: Arial; font-size: 14px; color: #736f66;"> 
+                    Email: <span style="font-family: Arial; font-size: 14px; color: #000;">suporte@horadomedico.com.br</span><br />
+                    Telefone: <span style="font-family: Arial; font-size: 14px; color: #000;">43 3351-0234</span>
+                </p>
+            </td>
+        </tr>
+    </table>
+</center>
+
+<p>Este email foi gerado no dia <?= $date ?> às <?= $horario ?>.</p>

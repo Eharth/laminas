@@ -1,0 +1,45 @@
+<?php
+$data = new App_Plugins_Data();
+?>
+
+
+
+<!-- CONTEUDO DA PAGINA -->
+
+<div class="row marketing">
+    
+    <div class="container">
+        <?php if (!empty($this->message)) : ?>
+    <?php foreach ($this->message as $message) : ?>
+        <?php if ($message): ?>
+            <div class="<?php print "alert-dismissible text-center alert alert-" . $this->escape(key($message)); ?>">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <strong><?php print $this->escape($message[key($message)]); ?></strong>
+            </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
+<?php endif; ?>
+        
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?= $this->title;?></h3>
+            </div>
+           
+            <!-- Table -->
+            <table class="table table-striped">
+                
+                <tbody>                    
+                    <tr>
+						<td><h1>Email enviado com sucesso!</h1></td>
+                    </tr> 
+					 <tr>
+						<td><a href="<?php echo $this->url(array('controller' => 'administradores', 'action' => 'index')); ?>" class="btn btn-success">voltar</a></td>
+                    </tr>      
+                </tbody>                     
+            </table>
+            
+        </div>
+    </div> 
+</div>
+
+
